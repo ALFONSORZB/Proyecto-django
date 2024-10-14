@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera página web</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Enlace al stylesheet de la página -->
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="#{%url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'vproducto' %}">Productos</a></li>
+                <li><a href="{%url 'rtenis' %}">Registrar</a></li>
+            </ul>
+        </nav>
+        <div class="slider">
+            <img src="{% static 'Assets/Images/beautiful-sneakers-graffiti.jpg' %}" alt="Portada 1" class="slide">
+            <img src="{% static 'Assets/Images/diseno-calzado-deportivo-moderno-movimiento-abstracto-generado-ia_188544-19638.avif' %}" alt="Portada 2" class="slide">
+            <img src="{% static 'Assets/Images/fashion-shoes-sneakers.jpg' %}" alt="Portada 3" class="slide">
+        </div>
+    </div>
+
+    <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
+
+    <!-- Formulario de contacto -->
+    <section id="Contacto" >
+        <h2>Actualizar cliente!</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for campo in formulario1%}
+            <label for="name">{{campo.label}}</label>
+            <input 
+            type="{{campo.field.widget.input_type}}" 
+            id="name" 
+            name="{{campo.name}}" 
+            placeholder="{{campo.label}}"
+            value="{{campo.value|default:''}}"
+            required>
+            <br>
+            <br>
+            {% endfor %}
+            <br>
+            <br>
+            <button type="submit">Actualizar</button>
+        </form>
+    </section>
+</body>
+</html>

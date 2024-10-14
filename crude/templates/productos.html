@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera página web</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'imagen.css' %}"> <!-- Enlace al stylesheet de la página -->
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'vproducto' %}">Productos</a></li>
+                <li><a href="{% url 'rtenis' %}">Registrar</a></li>
+            </ul>
+        </nav>
+        <div class="slider">
+            <img src="{% static 'Assets/Images/beautiful-sneakers-graffiti.jpg' %}" alt="Portada 1" class="slide">
+            <img src="{% static 'Assets/Images/diseno-calzado-deportivo-moderno-movimiento-abstracto-generado-ia_188544-19638.avif' %}" alt="Portada 2" class="slide">
+            <img src="{% static 'Assets/Images/fashion-shoes-sneakers.jpg' %}" alt="Portada 3" class="slide">
+        </div>
+    </div>
+
+    <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
+
+    <!-- Formulario de contacto -->
+  
+        {% for producto in productos%}
+        <h1>{{producto.id}}</h1>
+        <h1>{{producto.nombre}}</h1>
+        <h1>{{producto.stock}}</h1>
+        <img src="{{producto.imagen.url}}" class="imagen-personalizada"/>
+        <h1>{{producto.precio}}</h1>
+        <h1>{{producto.descripcion}}</h1>
+        <form action="{% url 'eliminarp' producto.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+        <form action="{% url 'actualizarp' producto.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Actualizar</button>
+        </form>
+        {% endfor%}
+ 
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera página web</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Enlace al stylesheet de la página -->
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'vcliente' %}">Clientes</a></li>
+                <li><a href="{% url 'cliente' %}">Registrarse</a></li>
+            </ul>
+        </nav>
+        <div class="slider">
+            <img src="{% static 'Assets/Images/beautiful-sneakers-graffiti.jpg' %}" alt="Portada 1" class="slide">
+            <img src="{% static 'Assets/Images/diseno-calzado-deportivo-moderno-movimiento-abstracto-generado-ia_188544-19638.avif' %}" alt="Portada 2" class="slide">
+            <img src="{% static 'Assets/Images/fashion-shoes-sneakers.jpg' %}" alt="Portada 3" class="slide">
+        </div>
+    </div>
+
+    <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
+
+    <!-- Formulario de contacto -->
+    <section id="clientes">
+        {% for cliente in clientes%}
+        <h1>{{cliente.id}}</h1>
+        <h1>{{cliente.nombre}}</h1>
+        <h1>{{cliente.apellido}}</h1>
+        <h1>{{cliente.correo}}</h1>
+        <h1>{{cliente.telefono}}</h1>
+        <form action="{% url 'eliminar' cliente.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+        <form action="{% url 'actualizar' cliente.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Actualizar</button>
+        </form>
+        {% endfor%}
+    </section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Producto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Ruta al archivo CSS dentro de static -->
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class ="encabezado">
+        <nav>
+            <ul>
+                <li><a href="#Seccion principal">Inicio</a></li> 
+                <li><a href="#Sobre_mi">Quienes somos</a></li>
+                <li><a href="#galeria_productos">Productos</a></li>
+                <li><a href="#Contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- Slider de imágenes -->
+        <div class="slider">
+            <img src="{% static 'Assets/Images/beautiful-sneakers-graffiti.jpg' %}" alt="Portada 1" class="slide">
+            <img src="{% static 'Assets/Images/diseno-calzado-deportivo-moderno-movimiento-abstracto-generado-ia_188544-19638.avif' %}" alt="Portada 2" class="slide">
+            <img src="{% static 'Assets/Images/fashion-shoes-sneakers.jpg' %}" alt="Portada 3" class="slide">
+        </div>
+    </div>
+
+    <!-- Script para el slider -->
+    <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
+
+    <!-- Detalle del producto -->
+    <section id="detalle_producto">
+        <div class="producto-detalle">
+            <img id="productoImagen" src="" alt="Imagen del Producto">
+            <h3 id="productoTitulo"></h3>
+            <h5 id="productoPrecio"></h5>
+            <p id="productoDescripcion"></p>
+            <input type="number" min="1" value="1">
+            <br><br>
+            <button>Comprar</button>
+            <br>
+        </div>
+    </section>
+
+    <!-- Script para ver productos -->
+    <script src="{% static 'Assets/Scripts/verproductos.js' %}"></script>
+</body>
+</html>
+
