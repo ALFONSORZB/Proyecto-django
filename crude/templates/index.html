@@ -52,7 +52,7 @@
                 <h3>Air Jordan 1 </h3>
                 <h5>$2,999.00</h5>
                 <p>Air Jordan 1 blanco, azul y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button onclick="comprarProducto(this)">Comprar</button>
+                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
     
             <div class="productos">
@@ -60,7 +60,7 @@
                 <h3>Air Jordan 1</h3>
                 <h5>$2,999.00</h5>
                 <p>Air Jordan 1 blanco, rojo y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button onclick="comprarProducto(this)">Comprar</button>
+                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
     
             <div class="productos">
@@ -68,7 +68,7 @@
                 <h3>Air Jordan 1</h3>
                 <h5>$2,999.00</h5>
                 <p>Air Jordan 1 blanco, naranja y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button onclick="comprarProducto(this)">Comprar</button>
+                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
     
             <div class="productos">
@@ -76,7 +76,7 @@
                 <h3>Air Jordan 1</h3>
                 <h5>$2,999.00</h5>
                 <p>Air Jordan 1 blanco, azul y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button onclick="comprarProducto(this)">Comprar</button>
+                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
     
             <div class="productos">
@@ -84,12 +84,20 @@
                 <h3>Air Jordan 1</h3>
                 <h5>$2,999.00</h5>
                 <p>Air Jordan 1 blanco, gris y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button onclick="comprarProducto(this)">Comprar</button>
+                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
         </div>
     </section>
     
     <script src="{% static 'Assets/Scripts/funcionver.js' %}"></script>
+    <br>
+    <br>
+
+    <form action="{%url 'salir' %}" >
+        <button type="submit">
+            Cerrar sesion
+        </button>
+    </form>
 
 </body>
 </html>

@@ -4,7 +4,10 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
 urlpatterns=[
-    path('',views.primero, name='inicio'),
+    path('',views.sigin, name='sigin'),
+    path('regis',views.regis, name='regis'),
+    path('salir',views.salir, name='salir'),
+    #path('sigin',views.sigin, name='sigin'),
     path('inicio',views.inicio, name='inicio'),
     path('compra',views.compra, name='comprar'),
     path('cliente',views.cliente, name='cliente'),
