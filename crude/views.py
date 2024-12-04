@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def primero(request):
-    return render(request,'index.html')
+    productos=Producto.objects.all()
+    return render(request,'index.html',{'productos': productos})
 
 def regis(request):
     if request.method=='GET':
@@ -39,17 +40,18 @@ def sigin(request):
             })
         else:
             login(request,user)
-            return redirect ('inicio')
+            return redirect ('vproducto')
 
 def salir(request):
     logout(request)
-    return redirect('sigin')
+    return redirect('inicio')
 
 @login_required
 def inicio(request):
-    return render(request,'index.html')
+    productos=Producto.objects.all()
+    return render(request,'index.html',{'productos': productos})
     
-@login_required
+
 def compra(request):
     return render(request,'compra_producto.html')
     

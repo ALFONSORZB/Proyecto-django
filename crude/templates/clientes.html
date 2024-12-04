@@ -13,9 +13,8 @@
     <div class="encabezado">
         <nav>
             <ul>
-                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'vproducto' %}">Productos</a></li>
                 <li><a href="{% url 'vcliente' %}">Clientes</a></li>
-                <li><a href="{% url 'cliente' %}">Registrarse</a></li>
             </ul>
         </nav>
         <div class="slider">
@@ -28,6 +27,7 @@
     <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
 
     <!-- Formulario de contacto -->
+     
     <section id="clientes">
         {% for cliente in clientes%}
         <h1>{{cliente.id}}</h1>

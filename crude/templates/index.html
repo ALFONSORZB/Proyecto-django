@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi primera página web</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Enlace al stylesheet de la página -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'imagen.css' %}">
+    <link rel="stylesheet" href="{% static 'boton.css' %}">
 </head>
 
 <body>
@@ -15,8 +17,8 @@
             <ul>
                 <li><a href="#Seccion_principal">Inicio</a></li>
                 <li><a href="#Sobre_mi">Quienes somos</a></li>
-                <li><a href="{%url 'vproducto' %}">Productos</a></li>
-                <li><a href="{%url 'vcliente' %}">Clientes</a></li>
+                <li><a href="#galeria_productos">Productos</a></li>
+                <li><a href="#Contacto">Clientes</a></li>
             </ul>
         </nav>
         <div class="slider">
@@ -27,7 +29,15 @@
     </div>
 
     <script src="{% static 'Assets/Scripts/slider.js' %}"></script>
-    
+    <script src="{% static 'Assets/Scripts/funcionboton.js' %}"></script>
+
+
+    <div class="boton-superior-derecha">
+        <form action="{%url 'sigin' %}">
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
     <!-- Sección principal -->
     <section id="Seccion_principal">
         <h1>Bienvenidos a SneakStyle!</h1>
@@ -47,58 +57,27 @@
     <!-- Sección "Catálogo Productos" -->
     <section id="galeria_productos">
         <div class="galeria">
+            {% for producto in productos %}
             <div class="productos">
-                <img src="{% static 'Assets/Images/jordan2.jpg' %}" alt="Producto1">
-                <h3>Air Jordan 1 </h3>
-                <h5>$2,999.00</h5>
-                <p>Air Jordan 1 blanco, azul y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
+                <img src="{{producto.imagen.url}}"/>
+                <h3>{{producto.nombre}}</h3>
+                <h5>${{producto.precio}}</h5>
+                <p>{{producto.descripcion}}</p>
                 <button type="submit" onclick="comprarProducto(this)">Comprar</button>
             </div>
-    
-            <div class="productos">
-                <img src="{% static 'Assets/Images/descarga (6).jpeg' %}" alt="Producto2">
-                <h3>Air Jordan 1</h3>
-                <h5>$2,999.00</h5>
-                <p>Air Jordan 1 blanco, rojo y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
-            </div>
-    
-            <div class="productos">
-                <img src="{% static 'Assets/Images/jordan.jpg' %}" alt="Producto3">
-                <h3>Air Jordan 1</h3>
-                <h5>$2,999.00</h5>
-                <p>Air Jordan 1 blanco, naranja y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
-            </div>
-    
-            <div class="productos">
-                <img src="{% static 'Assets/Images/images.jpeg' %}" alt="Producto4">
-                <h3>Air Jordan 1</h3>
-                <h5>$2,999.00</h5>
-                <p>Air Jordan 1 blanco, azul y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
-            </div>
-    
-            <div class="productos">
-                <img src="{% static 'Assets/Images/images (1).jpeg' %}" alt="Producto5">
-                <h3>Air Jordan 1</h3>
-                <h5>$2,999.00</h5>
-                <p>Air Jordan 1 blanco, gris y negro, ideal para tus outfits y combinar con cualquier estilo.</p>
-                <button type="submit" onclick="comprarProducto(this)">Comprar</button>
-            </div>
+            {% endfor %}
         </div>
     </section>
     
     <script src="{% static 'Assets/Scripts/funcionver.js' %}"></script>
-    <br>
-    <br>
-
-    <form action="{%url 'salir' %}" >
-        <button type="submit">
-            Cerrar sesion
-        </button>
-    </form>
-
+    <br><br>
+    <section id="Contacto">
+        <h2>Registrar cliente!</h2>
+        <form action="{%url 'cliente' %}">
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
 </body>
 </html>
+
 
