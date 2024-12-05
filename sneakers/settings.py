@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'sneakers.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sneakers2',
+        'NAME': 'prueba2',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
